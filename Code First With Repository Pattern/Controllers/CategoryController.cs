@@ -9,7 +9,7 @@ namespace Code_First_With_Repository_Pattern.Controllers
 {
     public class CategoryController : Controller
     {
-        readonly CategoryRepository categoryRepository = new CategoryRepository();
+        private CategoryRepository categoryRepository = new CategoryRepository();
         // GET: Category
         public ActionResult Index()
         {

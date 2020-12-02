@@ -10,6 +10,8 @@ namespace Code_First_With_Repository_Pattern.Models
     {
         public CFInvetoryDbContext() : base("CFInventoryDb")
         {
+            //Database.SetInitializer(new CreateDatabaseIfNotExists);
+            //Database.SetInitializer(new DropCreateDatabaseAlways);
             Database.SetInitializer(new DropCreateDatabaseIfModelChanges<CFInvetoryDbContext>());
         }
 
