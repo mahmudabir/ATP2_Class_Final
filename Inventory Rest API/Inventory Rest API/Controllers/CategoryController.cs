@@ -9,14 +9,18 @@ using System.Web.Http;
 
 namespace Inventory_Rest_API.Controllers
 {
-    public class CategoriesController : ApiController
+    [RoutePrefix("api/categories")]
+    public class CategoryController : ApiController
     {
         private CategoryRepository categoryRepository = new CategoryRepository();
+
+        [Route("")]
         public IHttpActionResult Get()
         {
             return Ok(categoryRepository.GetAll());
         }
 
+        [Route("{id}"), Nmae="GetCategoryByID"]
         public IHttpActionResult Get(int id)
         {
             var category = categoryRepository.Get(id);
@@ -28,12 +32,15 @@ namespace Inventory_Rest_API.Controllers
             return Ok(category);
         }
 
+        [Route("")]
         public IHttpActionResult Post(Category category)
         {
             categoryRepository.Insert(category);
-            return Created("api/categories/" + category.CategoryId, category);
+            string uri = Url.Link("GetCategoryByID", new { id = category.CategoryId });
+            return Created(uri, category);
         }
 
+        [Route("{id}")]
         public IHttpActionResult Put([FromUri] int id, [FromBody] Category category)
         {
             category.CategoryId = id;
@@ -41,13 +48,14 @@ namespace Inventory_Rest_API.Controllers
             return Ok(category);
         }
 
+        [Route("{id}")]
         public IHttpActionResult Delete(int id)
         {
             categoryRepository.Delete(id);
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        [Route("api/categories/{id}/products")]
+        [Route("{id}/products")]
         public IHttpActionResult GetProductsByCategoryID(int id)
         {
             ProductRepository productRepository = new ProductRepository();
