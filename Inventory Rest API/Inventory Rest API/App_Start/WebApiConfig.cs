@@ -21,6 +21,7 @@ namespace Inventory_Rest_API
             );
 
             config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new Newtonsoft.Json.Serialization.CamelCasePropertyNamesContractResolver();
+            //config.Formatters.Remove(config.Formatters.JsonFormatter);
         }
     }
 }
