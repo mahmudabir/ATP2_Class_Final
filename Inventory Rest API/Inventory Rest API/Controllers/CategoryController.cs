@@ -12,6 +12,7 @@ namespace Inventory_Rest_API.Controllers
     [RoutePrefix("api/categories")]
     public class CategoryController : ApiController
     {
+        //HATEOAS
         private CategoryRepository categoryRepository = new CategoryRepository();
 
         [Route("")]
@@ -20,7 +21,7 @@ namespace Inventory_Rest_API.Controllers
             return Ok(categoryRepository.GetAll());
         }
 
-        [Route("{id}"), Nmae="GetCategoryByID"]
+        [Route("{id}", Name = "GetCategoryByID")]
         public IHttpActionResult Get(int id)
         {
             var category = categoryRepository.Get(id);
