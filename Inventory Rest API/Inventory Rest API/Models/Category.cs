@@ -28,8 +28,10 @@ namespace Inventory_Rest_API.Models
         public string CategoryName { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        [JsonIgnore, XmlIgnore]
-        public virtual ICollection<Product> Products { get; set; }
-        //public ICollection<Product> Products { get; set; }
+
+
+        [JsonIgnore]
+        //public virtual ICollection<Product> Products { get; set; }
+        public ICollection<Product> Products { get; set; }
     }
 }
