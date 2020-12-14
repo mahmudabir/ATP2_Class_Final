@@ -1,4 +1,5 @@
-﻿using Inventory_Rest_API.Models;
+﻿using Inventory_Rest_API.Attributes;
+using Inventory_Rest_API.Models;
 using Inventory_Rest_API.Repositories;
 using System;
 using System.Collections.Generic;
@@ -12,9 +13,14 @@ namespace Inventory_Rest_API.Controllers
     [RoutePrefix("api/categories")]
     public class CategoryController : ApiController
     {
-        //HATEOAS
+        //HATEOAS - Hypermedia as the engine of application state
+        //Basic Authentication
+        //Open/Token-based Authentication
+        //Third party Authentication
+
         private CategoryRepository categoryRepository = new CategoryRepository();
 
+        //[Route(""), BasicAuthentication]
         [Route("")]
         public IHttpActionResult Get()
         {

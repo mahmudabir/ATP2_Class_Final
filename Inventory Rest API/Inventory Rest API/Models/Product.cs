@@ -20,6 +20,7 @@ namespace Inventory_Rest_API.Models
         public string ProductName { get; set; }
         public double Price { get; set; }
         public int CategoryId { get; set; }
-        public virtual Category Category { get; set; }
+        //public virtual Category Category { get; set; }
+        public Category Category { get; set; }
     }
 }
