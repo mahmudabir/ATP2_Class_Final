@@ -37,6 +37,7 @@ namespace Inventory_Rest_API.Attributes
 
                 if (username == "admin" && password == "123")
                 {
+                    //https://dotnettutorials.net/lesson/role-based-web-api-authentication/
                     Thread.CurrentPrincipal = new GenericPrincipal(new GenericIdentity(username), null);
                 }
                 else
