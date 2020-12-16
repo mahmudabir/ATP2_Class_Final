@@ -6,7 +6,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Security.Principal;
+using System.Threading;
 using System.Web.Http;
+using System.Web.Http.Controllers;
 
 namespace Inventory_Rest_API.Controllers
 {
@@ -20,10 +23,15 @@ namespace Inventory_Rest_API.Controllers
 
         private CategoryRepository categoryRepository = new CategoryRepository();
 
-        //[Route(""), BasicAuthentication]
-        [Route("")]
+        [Route(""), BasicAuthentication]
+        //[Route("")]
         public IHttpActionResult Get()
         {
+            var authOrNot = Thread.CurrentPrincipal.Identity.IsAuthenticated;
+            var authUsername = Thread.CurrentPrincipal.Identity.Name.ToString();
+            var authUserRole = Thread.CurrentPrincipal.IsInRole(null);
+            var authInstanceType = Thread.CurrentPrincipal.GetType();
+            var authType = Thread.CurrentPrincipal.Identity.AuthenticationType;
             return Ok(categoryRepository.GetAll());
         }
 
@@ -67,6 +75,26 @@ namespace Inventory_Rest_API.Controllers
         {
             ProductRepository productRepository = new ProductRepository();
             return Ok(productRepository.GetProductsByCategory(id));
+        }
+
+
+        [Route("login")]
+        public IHttpActionResult GetLogin()
+        {
+            return StatusCode(HttpStatusCode.OK);
+        }
+
+        [Route("logout")]
+        public IHttpActionResult GetLogout()
+        {
+
+            Thread.CurrentPrincipal = new GenericPrincipal(new GenericIdentity(""), null);
+            var authOrNot = Thread.CurrentPrincipal.Identity.IsAuthenticated;
+            var authUsername = Thread.CurrentPrincipal.Identity.Name.ToString();
+            var authUserRole = Thread.CurrentPrincipal.IsInRole(null);
+            var authInstanceType = Thread.CurrentPrincipal.GetType();
+            var authType = Thread.CurrentPrincipal.Identity.AuthenticationType;
+            return StatusCode(HttpStatusCode.OK);
         }
     }
 }
