@@ -1,0 +1,89 @@
+﻿<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Client Demo</title>
+
+    <script type="text/javascript" src="jquery-3.5.1.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+</head>
+
+<body>
+
+
+    <p id="msg"></p>
+    <p id="par1"></p>
+    <hr>
+
+    <h1>Add New Category</h1>
+    <table>
+        <tr>
+            <td><label>Category Name</label></td>
+            <td><input type="text" id="addCategoryName"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><button id="addbtn">Add Category</button></td>
+        </tr>
+    </table>
+    <br>
+    <hr>
+
+    <h1>Update Category</h1>
+    <table>
+        <tr>
+            <td><label>Categories</label></td>
+            <td>
+                <select id="updateCatList">
+                    <!-- <option value="" selected>--Select--</option> -->
+                </select>
+
+            </td>
+        </tr>
+        <tr>
+            <td><label>Category Name</label></td>
+            <td><input type="text" id="updateCategoryName"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><button id="updatebtn">Update Category</button></td>
+        </tr>
+    </table>
+    <br>
+    <hr>
+
+    <h1>Category List</h1>
+    <table border="1" id="categoryList">
+        <thead>
+            <tr>
+                <th>Category ID</th>
+                <th>Category Name</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <br>
+    <hr>
+
+
+    <h1>Product List</h1>
+    <table border="1" id="productList">
+        <thead>
+            <tr>
+                <th>Product ID</th>
+                <th>Product Name</th>
+                <th>Product Price</th>
+                <th>Category Name</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <br>
+    <hr>
+</body>
+
+</html>
